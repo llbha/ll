@@ -138,7 +138,6 @@ Page({
           })
           console.log('list', list)
         } else if ('401' == res.data.code) {
-          console.log('uuuuuuuu',wx.getStorageSync('username'))
           if (wx.getStorageSync('username')) {
             console.log('token值失效')
             app.gettoken()

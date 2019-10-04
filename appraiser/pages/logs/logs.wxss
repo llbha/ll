@@ -7,7 +7,7 @@ top:0;
 opacity: 1;
 }
 
-.aa{
+.formid_button{
   color: red;
 display: block;
 width: 80%;

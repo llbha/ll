@@ -1,6 +1,19 @@
-
+<form bindsubmit="saveFormId" report-submit="true">
+  <button form-type="submit" class="formid_button" bindtap="click">
+    <form bindsubmit="saveFormId" report-submit="true">
+      <button form-type="submit" class="formid_button" bindtap="click">
         <form bindsubmit="saveFormId" report-submit="true">
-          <button form-type="submit" class="formid_button">
-  <view bindtap="btnclick" class="aa">点我</view>
+          <button form-type="submit" class="formid_button" bindtap="click">
+            <form bindsubmit="saveFormId" report-submit="true">
+              <button form-type="submit" class="formid_button" bindtap="click">
+                <form bindsubmit="saveFormId" report-submit="true">
+                  <button form-type="submit" class="formid_button" bindtap="click">点我</button>
+                </form>
+              </button>
+            </form>
           </button>
         </form>
+      </button>
+    </form>
+  </button>
+</form>

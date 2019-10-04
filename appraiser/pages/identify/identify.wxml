@@ -38,8 +38,7 @@
         <view wx:if="{{order_info.order_status!=0}}" class="tiem">鉴定师：{{order_info.udpate_user_name}}</view>
       </view>
 
-    </button>
-  </form>
+
       <view class="reason" wx:if="{{order_info.order_status==5}}">
         <block wx:for="{{reason_list}}" wx:key="reason_list">
           <text class='res_index' wx:if="{{item.type=='manual'}}">存在问题：{{item.value}}</text>
@@ -48,21 +47,30 @@
           </view>
         </block>
       </view>
-
+    </button>
+  </form>
 
 
   <view class="container-pic_0" wx:if="{{order_info.order_status==0}}">
     <block wx:for="{{list}}" wx:key="res_list" wx:for-item='item'>
       <view class='item-box'>
-        <image class='product-photo' src='{{item.picUrl}}' bindtap="check_pic" data-url="{{item.picUrl}}" data-id='{{item.orderId}}' mode="widthFix"></image>
+        <form bindsubmit="saveFormId" report-submit="true">
+          <button form-type="submit" class="formid_button" bindtap="check_pic" data-url="{{item.picUrl}}" data-id='{{item.orderId}}'>
+            <image class='product-photo' src='{{item.picUrl}}' mode="widthFix"></image>
+          </button>
+        </form>
       </view>
     </block>
   </view>
 
-    <view class="container-pic" wx:if="{{order_info.order_status!=0}}">
+  <view class="container-pic" wx:if="{{order_info.order_status!=0}}">
     <block wx:for="{{list}}" wx:key="res_list" wx:for-item='item'>
       <view class='item-box'>
-        <image class='product-photo' src='{{item.picUrl}}' bindtap="check_pic" data-url="{{item.picUrl}}" data-id='{{item.orderId}}' mode="widthFix"></image>
+        <form bindsubmit="saveFormId" report-submit="true">
+          <button form-type="submit" class="formid_button" bindtap="check_pic" data-url="{{item.picUrl}}" data-id='{{item.orderId}}'>
+            <image class='product-photo' src='{{item.picUrl}}' mode="widthFix"></image>
+          </button>
+        </form>
       </view>
     </block>
   </view>
@@ -73,10 +81,26 @@
 
 <!-- 底部悬浮框 -->
 <view wx:if="{{order_info.order_status==0}}" class="round-click" hover-class="plus-hover">
-  <text class="true" bindtap='preventTouchMove_true' data-status="true">真</text>
-  <text class="false" bindtap='preventTouchMove_false' data-status="false">假</text>
-  <text class="unknow" bindtap='preventTouchMove_unknow' data-status="unknow">无法鉴别</text>
-  <text class="supply" bindtap='preventTouchMove_supply' data-status="supply">补图</text>
+  <form bindsubmit="saveFormId" report-submit="true">
+    <button form-type="submit" class="true" bindtap='preventTouchMove_true' data-status="true">
+      <text>真</text>
+    </button>
+  </form>
+  <form bindsubmit="saveFormId" report-submit="true">
+    <button form-type="submit" class="false" bindtap='preventTouchMove_false' data-status="false">
+      <text>假</text>
+    </button>
+  </form>
+  <form bindsubmit="saveFormId" report-submit="true">
+    <button form-type="submit" class="unknow" bindtap='preventTouchMove_unknow' data-status="unknow">
+      <text>无法鉴别</text>
+    </button>
+  </form>
+  <form bindsubmit="saveFormId" report-submit="true">
+    <button form-type="submit" class="supply" bindtap='preventTouchMove_supply' data-status="supply">
+      <text>补图</text>
+    </button>
+  </form>
 </view>
 
 
@@ -116,8 +140,16 @@
 
 
   <view class="modal-footer">
-    <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
-    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm" id='{{status}}_color' data-id="{{status}}">确定</view>
+    <form bindsubmit="saveFormId" report-submit="true">
+      <button form-type="submit" class="btn-cancel" bindtap="onCancel" data-status="cancel">
+        <view>取消</view>
+      </button>
+    </form>
+    <form bindsubmit="saveFormId" report-submit="true">
+      <button form-type="submit" class="btn-confirm" bindtap="onConfirm" data-status="confirm" id='{{status}}_color' data-id="{{status}}">
+        <view>确定</view>
+      </button>
+    </form>
   </view>
 </view>
 
@@ -129,33 +161,44 @@
 <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus_4}}">
   <view id="commit">
     <view class="com_title">
-     <view class="commit-title">填写补图原因</view>
-      <image class="close" src="../../img/handle/close_dark@2x.png" bindtap='close'></image>
+      <view class="commit-title">填写补图原因</view>
+      <form bindsubmit="saveFormId" report-submit="true">
+        <button form-type="submit" class="close" bindtap='close'>
+          <image class="close_img" src="../../img/handle/close_dark@2x.png"></image>
+        </button>
+      </form>
     </view>
-    <!-- <image class="close" src="../../img/handle/close_dark@2x.png" bindtap='close'></image>
-    <view class="commit-title">填写补图原因</view> -->
 
+<form bindsubmit="saveFormId" report-submit="true">
+        <button form-type="submit" class="formid_button">
     <input class="input-text" placeholder="补充说明" bindinput='getRemarks'></input>
+            </button>
+      </form>
+
     <checkbox-group name="checkbox" class="check">
-      <label bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd"  bindtap='clicks' bindlongpress="load" wx:for="{{checks}}" wx:key="{{checks}}" wx:for-index="index" data-index="{{index}}" class='{{item.checked?"is_checked":""}}' data-val="{{item.name}}" > 
+      <label bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindtap='clicks' bindlongpress="load" wx:for="{{checks}}" wx:key="{{checks}}" wx:for-index="index" data-index="{{index}}" class='{{item.checked?"is_checked":""}}' data-val="{{item.name}}">
         <checkbox value="{{item.name}}" data-val="{{item.name}}" hidden='false' checked='{{item.checked}}' /> {{item.name}}
-        <!-- <image wx:if="{{item.name.length > 8}}" class="load" src="../../img/handle/load.png" data-val="{{item.name}}" bindtap='load'></image> -->
       </label>
     </checkbox-group>
-    <view class='commit_reason' bindtap='to_confirm' data-status="supply">提交</view>
+
+    <form bindsubmit="saveFormId" report-submit="true">
+      <button form-type="submit" class="close" bindtap='close' class='commit_reason' bindtap='to_confirm' data-status="supply">
+        <view>提交</view>
+      </button>
+    </form>
   </view>
 </view>
 
 
 
-<!--mask-->  
-<view class="toast_mask" wx:if="{{isShowToast}}"> 
-<!--以下为toast显示的内容-->  
-<view class="toast_content_box" wx:if="{{isShowToast}}">  
-  <view class="toast_content">  
-    <view class="toast_content_text">  
-      {{toastText}}
-    </view>  
-  </view>  
-</view>
+<!--mask-->
+<view class="toast_mask" wx:if="{{isShowToast}}">
+  <!--以下为toast显示的内容-->
+  <view class="toast_content_box" wx:if="{{isShowToast}}">
+    <view class="toast_content">
+      <view class="toast_content_text">
+        {{toastText}}
+      </view>
+    </view>
+  </view>
 </view>

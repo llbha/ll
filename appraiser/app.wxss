@@ -52,7 +52,6 @@
 .formid_button {
   background-color: transparent;
   padding: 0;
-  margin: 0;
   text-align: left;
 }
 .formid_button::after {

@@ -67,6 +67,7 @@ page {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-size: 15px;
 }
 
 .date_res {
@@ -208,6 +209,7 @@ page {
   border-bottom: 1px solid rgba(217, 217, 217, 1);
   text-align: center;
   line-height: 30px;
+  background-color: #fff
 }
 
 .middle {
@@ -244,4 +246,9 @@ page {
   text-align: center;
   line-height: 30px;
   color: rgba(2, 193, 196, 1);
+    background-color: #fff;
+}
+
+button::after{
+  border: none
 }

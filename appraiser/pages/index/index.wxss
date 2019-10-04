@@ -16,38 +16,30 @@
   top: 0;
   display: flex;
   flex-direction: row;
-  justify-content: space-between
-}
-
-.appraisal, .number {
-  width: 88px;
-  height: 32px;
-  background: rgba(255, 255, 255, 1);
-  border-radius: 4px 0px 0px 4px;
-  border: 1.2px solid rgba(34, 34, 34, 1);
-  font-size: 16px;
-  line-height: 30px;
-  float: left;
-  margin-top: 12px;
-  text-align: center;
-}
-
-.appraisal {
-  margin-left: 12px;
-  border-radius: 4px 0px 0px 4px;
-  border-style: solid none solid solid;
+  justify-content: space-between;
 }
 
 .number {
+  width: 88px;
+  height: 32px;
+  background: rgba(255, 255, 255, 1);
+  border: 1.2px solid rgba(34, 34, 34, 1);
+  font-size: 16px;
+  line-height: 30px;
+  margin-top: 12px;
+  text-align: center;
   border-radius: 4px 4px 4px 4px;
   border-style: solid solid solid solid;
   float: right;
-  margin-right: 2%
 }
 
-.formid_but{
-background:  #ffffff;
+#num.formid_button{
+padding: 0 10% 0 0;
+background: #ffffff;
+border: none;
+margin-right: 12px;
 }
+
 
 #user {
   float: right;
@@ -155,7 +147,6 @@ width:47.5%;
   line-height:center;
   display: flex;
   width: 100%;
-  height: auto;
   flex-direction: column;
   margin-bottom: 10px;
   border:1px solid  #ffffff;
@@ -177,12 +168,9 @@ width:47.5%;
 
 .formid_button {
 background:  #ffffff;
-padding: 0;
-margin: 0;
 text-align: left;
-/* border-radius: 0px 0px 10px 10px;  */
-/* border:2px solid  #ffffff; */
-/* box-shadow: 0 0 10px #ccc; */
+display: flex;
+flex-direction: column;
 }
 
 

@@ -124,34 +124,50 @@
   /* border-top:1px solid #dedede */
 }
 
-.round-click text {
-  width: 56px;
-  height: 56px;
-  color: #fff;
-  text-align: center;
-  border-radius: 100%;
-  line-height: 56px;
-}
-
 .true {
   background: rgba(2, 124, 196, 1);
   font-size: 22px;
+  width: 56px;
+  border-radius: 100%;
+  color: #fff;
+  text-align: center;
+  line-height: 56px;
 }
 
 .false {
   background: rgba(196, 38, 2, 1);
   font-size: 22px;
+  border: none;
+  width: 56px;
+  border-radius: 100%;
+  color: #fff;
+  text-align: center;
+  line-height: 56px;
 }
 
 .unknow {
   background: rgba(51, 51, 51, 1);
   font-size: 14px;
-  word-break: break-all;
+  width: 56px;
+  border-radius: 100%;
+  color: #fff;
+  text-align: center;
+  height: 56px;
+line-height: 20px;
+padding-top: 8px;
 }
+
 
 .supply {
   background: rgba(253, 150, 33, 1);
   font-size: 18px;
+  border: none;
+  width: 56px;
+  border-radius: 100%;
+  color: #fff;
+    height: 56px;
+white-space: nowrap;
+padding: 4px;
 }
 
 .modal-dialog {
@@ -179,6 +195,12 @@
   color: white;
   text-align: center;
 }
+.close::after{
+  border: none;
+}
+/* button::after{
+  border: none
+} */
 
 #true {
   background: rgba(2, 124, 196, 1);
@@ -203,23 +225,27 @@
 .modal-footer {
   display: flex;
   flex-direction: row;
-  height: 86rpx;
   border-top: 1px solid #dedede;
   font-size: 34rpx;
   line-height: 86rpx;
 }
 
 .btn-cancel {
-  width: 50%;
+  width: 280rpx;
+  padding-bottom: 5rpx;
   color: #666;
   text-align: center;
-  border-right: 1px solid #dedede;
+  white-space: nowrap;
+  font-size: 16px;
+  border-right: 1px #666
 }
 
 .btn-confirm {
-  width: 50%;
-  color: #ec5300;
+   width: 280rpx;
   text-align: center;
+  white-space: nowrap;
+    padding-bottom: 5rpx;
+      font-size: 16px;
 }
 
 #true_color {
@@ -304,11 +330,15 @@
 }
 
 .close {
-  width: 18px;
-  height: 18px;
   float: right;
-  margin-right: 15px;
-  margin-top: 16px;
+  padding-top: 5px;
+  border: none;
+  background: #fff
+}
+
+.close_img{
+   width: 18px;
+  height: 18px;
 }
 
 label {
