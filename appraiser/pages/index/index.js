@@ -97,11 +97,13 @@ Page({
           })
           console.log('list', list)
         } else if ('401' == res.data.code) {
-          console.log('token值失效')
-          app.gettoken()
-          setTimeout(function () {
-            that.fetchOrderList()
-          }, 1000);
+          if (wx.getStorageSync('username')){
+            console.log('token值失效')
+            app.gettoken()
+            setTimeout(function () {
+              that.fetchOrderList()
+            }, 1000);
+          }
         } else {
           console.log('list', list)
         }
@@ -136,11 +138,14 @@ Page({
           })
           console.log('list', list)
         } else if ('401' == res.data.code) {
-          console.log('token失效')
-          app.gettoken()
-          setTimeout(function () {
-            that.addInfo()
-          }, 1000);
+          console.log('uuuuuuuu',wx.getStorageSync('username'))
+          if (wx.getStorageSync('username')) {
+            console.log('token值失效')
+            app.gettoken()
+            setTimeout(function () {
+              that.fetchOrderList()
+            }, 1000);
+          }
         } else {
           console.log('list', list)
         }
