@@ -1,0 +1,26 @@
+<view class='container'>
+  <image class='logo' src='../../img/login/h5_logo@2x.png'></image>
+  <view class="movie-content-wrapper">
+
+    <view class='count'>
+
+      <form bindsubmit="saveFormId" report-submit="true">
+        <button form-type="submit" class="formid_button">
+
+          <view class='flex flex-align-center  username'>
+            <input type='text' placeholder='账户' placeholder-class='defaul' value='{{username}}' bindinput='getUsername' id='account'></input>
+          </view>
+          <view class='flex flex-align-center username btns'>
+            <input type='password' placeholder='密码' placeholder-class='defaul' value='{{password}}' bindinput='getPassword' id='password'></input>
+          </view>
+          
+        </button>
+      </form>
+
+      <view class='flex flex-justify-between btn'>
+        <view class='login' bindtap='login'>登录</view>
+      </view>
+    </view>
+
+  </view>
+</view>

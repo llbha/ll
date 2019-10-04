@@ -1,0 +1,6 @@
+
+        <form bindsubmit="saveFormId" report-submit="true">
+          <button form-type="submit" class="formid_button">
+  <view bindtap="btnclick" class="aa">点我</view>
+          </button>
+        </form>

@@ -1,0 +1,88 @@
+<view class="all">
+  <!-- <view class="topbar">
+    <view class="appraisal" bindtap="index">鉴别中心</view>
+    <view class="number" bindtap="statistics">鉴别数量</view>
+
+    <view class="user">
+      <view id="user_id" style="display:inline-block;">ID:{{userID}}</view>
+      <view bindtap="quit" id='quit'>退出</view>
+    </view>
+  </view> -->
+
+  <view class="chose_data" bindtap="pull_down">
+    <view class="date_res">
+      <view class="datatime">{{left_time}}</view>
+      <view wx:if="{{left_time != right_time}}" class="datatime">{{right_time}}</view>
+    </view>
+    <view class="pull_down1" wx:if="{{left_time == right_time}}">
+      <image src="/img/handle/pull_down.png" class="pulldown_pic"></image>
+    </view>
+    <view class="pull_down2" wx:if="{{left_time != right_time}}">
+      <image src="/img/handle/pull_down.png" class="pulldown_pic"></image>
+    </view>
+  </view>
+
+</view>
+
+
+<form bindsubmit="saveFormId" report-submit="true">
+  <button form-type="submit" class="formid_button">
+    <view class="container-box">
+      <block wx:for="{{list}}" wx:key="list" wx:for-item='item'>
+        <view class='item-box'>
+          <view class="userid">ID: {{item.updateUserId}}_{{item.username}}</view>
+          <view class="onright">
+            <view class="num_title">
+              鉴定数
+              <view class="num_result">{{item.totalCout}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </button>
+</form>
+
+
+
+<!-- 添加标签 -->
+<!--屏幕背景变暗的背景 -->
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<!--弹出框 -->
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+
+  <view class="timechose">
+    <view class="left{{leftSelect}}" bindtap='left_time'>{{left_time}}</view>
+    <view class="middle">至</view>
+    <view class="right{{rightSeclect}}" bindtap='right_time'>{{right_time}}</view>
+  </view>
+
+  <picker-view indicator-style="height:50px;" style='width:100%;height:300px;text-align:center;line-height:50px' value="{{value}}" bindchange="bindChange">
+    <picker-view-column>
+      <view wx:for="{{years}}" wx:key="year" style='line=height:50px;'>
+        {{item}}
+      </view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{months}}" wx:key="month">
+        {{item}}
+      </view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{days}}" wx:key="day">
+        {{item}}
+      </view>
+    </picker-view-column>
+  </picker-view>
+
+  <view class='commit_result' bindtap='to_confirm'>完成</view>
+</view>
+
+
+
+<!-- <modele bind:myevent="onCloseModal" showModalAni="{{showModalAni}}">
+  <view class="flex column  flex-align-center ">
+    <view className='modal-title'>提示</view>
+    <view>暂未授权，请先授权</view>
+  </view>
+</modele> -->

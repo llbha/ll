@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#fff",
+    "backgroundTextStyle": "dark",
+    "usingComponents": {
+      "modele": "../../components/model/model"
+    }
+  }

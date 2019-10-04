@@ -1,0 +1,10 @@
+<view class="exchange-modal {{showModalAni ? 'showTipsModal' : 'hideTipsModal'}}">
+    <view class="exchange-block" style="width:{{ modalType === 'contactlist' ? '590rpx' : '620rpx'}}">
+        <view class='modal-content-block'>
+            <slot></slot>
+        </view>
+        <button bindgetuserinfo='getUserInfo' class='btn largeplus primary' data-where='btn' open-type="getUserInfo">
+            确定
+        </button>
+    </view>
+</view>

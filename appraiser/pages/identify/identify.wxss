@@ -1,0 +1,405 @@
+.content {
+  width: 94%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0% 3%;
+  background: rgba(255, 255, 255, 1);
+  overflow-x: hidden;
+}
+
+/* .formid_button{
+  width: 100%
+} */
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.title {
+  float: left;
+  width: 180px;
+  height: 36px;
+  font-size: 36px;
+  font-family: SourceHanSansCN;
+  font-weight: bold;
+  color: rgba(51, 51, 51, 1);
+  line-height: 80px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.logo {
+  float: right;
+  margin-right: 3%;
+}
+
+.logo image {
+  width: 80px;
+  height: 81px;
+}
+
+.order_info {
+  width: 180px;
+  height: 75px;
+  font-size: 12px;
+  font-family: SourceHanSansCN;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 16px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.order_info1 {
+  width: 180px;
+  height: 55px;
+  font-size: 12px;
+  font-family: SourceHanSansCN;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 16px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.reason {
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-around; */
+  margin-right: 5%;
+  margin-bottom: 1%;
+  float: left;
+}
+
+.reason-box {
+  margin-right: 10px;
+  margin-bottom: 4px;
+}
+
+.res_index {
+  font-size: 16px;
+  line-height: 50rpx;
+}
+
+.reason_index {
+  border-radius: 12px;
+  font-size: 14px;
+  padding: 2px 6px;
+  line-height: 18px;
+  background: rgba(5, 193, 196, 0.5);
+  color: #fff;
+}
+
+.container-pic {
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+.container-pic_0 {
+  margin-top: 16px;
+  margin-bottom: 100px;
+}
+
+.product-photo {
+  width: 100%;
+}
+
+.round-click {
+  height: 80px;
+  background: rgba(255, 255, 255, 1);
+  width: 100%;
+  position: fixed;
+  padding-bottom: 10px;
+  bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 9;
+  /* border-top:1px solid #dedede */
+}
+
+.round-click text {
+  width: 56px;
+  height: 56px;
+  color: #fff;
+  text-align: center;
+  border-radius: 100%;
+  line-height: 56px;
+}
+
+.true {
+  background: rgba(2, 124, 196, 1);
+  font-size: 22px;
+}
+
+.false {
+  background: rgba(196, 38, 2, 1);
+  font-size: 22px;
+}
+
+.unknow {
+  background: rgba(51, 51, 51, 1);
+  font-size: 14px;
+  word-break: break-all;
+}
+
+.supply {
+  background: rgba(253, 150, 33, 1);
+  font-size: 18px;
+}
+
+.modal-dialog {
+  width: 560rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 9999;
+  background: #f9f9f9;
+  margin: -180rpx 105rpx;
+  border-radius: 36rpx;
+}
+
+.modal-title {
+  padding-top: 50rpx;
+  font-size: 36rpx;
+  color: white;
+  text-align: center;
+}
+
+.modal-content {
+  padding: 50rpx 32rpx;
+  font-size: 30rpx;
+  color: white;
+  text-align: center;
+}
+
+#true {
+  background: rgba(2, 124, 196, 1);
+  font-size: 22px;
+}
+
+#false {
+  background: rgba(196, 38, 2, 1);
+  font-size: 22px;
+}
+
+#unknow {
+  background: rgba(51, 51, 51, 1);
+  font-size: 14px;
+}
+
+#supply {
+  background: rgba(253, 150, 33, 1);
+  font-size: 18px;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  height: 86rpx;
+  border-top: 1px solid #dedede;
+  font-size: 34rpx;
+  line-height: 86rpx;
+}
+
+.btn-cancel {
+  width: 50%;
+  color: #666;
+  text-align: center;
+  border-right: 1px solid #dedede;
+}
+
+.btn-confirm {
+  width: 50%;
+  color: #ec5300;
+  text-align: center;
+}
+
+#true_color {
+  color: rgba(2, 124, 196, 1);
+  font-weight: bold;
+}
+
+#false_color {
+  color: rgba(196, 38, 2, 1);
+  font-weight: bold;
+}
+
+#unknow_color {
+  color: rgba(51, 51, 51, 1);
+  font-weight: bold;
+}
+
+#supply_color {
+  color: rgba(253, 150, 33, 1);
+  font-weight: bold;
+}
+
+/*使屏幕变暗 */
+
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.4;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+
+/*对话框 */
+
+.commodity_attr_box {
+  /* height: 80%; */
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1100;
+  background: #fff;
+  padding-top: 5rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.com_title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.commit-title {
+  /* width: 100%; */
+  height: 48px;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 8px 8px 0px 0px;
+  font-size: 18px;
+  font-family: PingFangSC;
+  font-weight: 600;
+  color: rgba(34, 34, 34, 1);
+  line-height: 48px;
+  /* text-align: center; */
+  margin-left: 35%;
+}
+
+.input-text {
+  width: 91%;
+  margin: 0 3% 2% 3%;
+  height: 40px;
+  border-radius: 4px;
+  border: 1.5px solid rgba(231, 231, 231, 1);
+  padding-left: 9px;
+}
+
+.close {
+  width: 18px;
+  height: 18px;
+  float: right;
+  margin-right: 15px;
+  margin-top: 16px;
+}
+
+label {
+  background-color: rgba(246, 246, 246, 1);
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.check {
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-around; */
+  margin: 0 0% 0 3%;
+  column-count: 2;
+  column-gap: 20px;
+}
+
+.check label {
+  border-radius: 8rpx;
+  display: block;
+  align-items: center;
+  margin: 0 3% 0 0;
+  margin-top: 16rpx;
+  padding: 5rpx 0rpx 5rpx 15rpx;
+  border: 1px solid rgba(246, 246, 246, 1);
+  width: 42.2%;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.is_checked {
+  background-color: rgba(5, 193, 196, 1);
+  /* opacity: 1; */
+  color: #fff;
+  border: 2rpx solid #fff;
+}
+
+.commit_reason {
+  width: 94%;
+  margin: 5% 3%;
+  height: 48px;
+  background: rgba(2, 193, 196, 1);
+  border-radius: 24px;
+  /* opacity: 0.3; */
+  font-size: 18px;
+  font-family: PingFangSC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 48px;
+  text-align: center;
+}
+
+/*mask*/
+
+.toast_mask {
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  /* overflow: hidden;   */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+}
+
+/*toast*/
+
+.toast_content_box {
+  display: flex;
+  width: 100%;
+  height: 75%;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 2100;
+}
+
+.toast_content {
+  width: 70%;
+  padding: 20rpx;
+  background: black;
+  opacity: 0.8;
+  border-radius: 20rpx;
+}
+
+.toast_content_text {
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+}

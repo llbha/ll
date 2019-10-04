@@ -1,0 +1,62 @@
+<view class="all">
+  <view class="topbar">
+    <!-- <view class="appraisal topbar-active" bindtap="index">鉴别中心</view> -->
+    <form bindsubmit="saveFormId" report-submit="true">
+          <button form-type="submit" class="formid_button">
+    <view id="userid" style="display:inline-block;">ID:{{userID}}</view>
+              </button>
+        </form>
+    <view class="number" bindtap="statistics">鉴别数量</view>
+
+    <!-- <view class="user">
+      <view id="user_id" style="display:inline-block;">ID:{{userID}}</view>
+      <view bindtap="quit" id='quit'>退出</view>
+    </view> -->
+  </view>
+
+  <view class="container-box">
+    <view id="data_left">
+      <view class='item-box' wx:for="{{list}}" wx:key="index" wx:for-item='item' wx:if="{{index%2 == 0}}">
+        <image class='product-photo' src='{{item.picFilePath}}1_0.jpg??x-oss-process=style/thumbnail' bindtap="detailpage" data-index="{{item}}" mode="widthFix" lazy-load='true'  binderror="errorFunction" data-num='{{index}}'></image>
+        <view wx:if="{{item.orderStatus==0}}" class="appraisal-review">待鉴别</view>
+        <view wx:if="{{item.orderStatus==1}}" class="appraisal-false">鉴别为假</view>
+        <view wx:if="{{item.orderStatus==2}}" class="appraisal-true">鉴别为真</view>
+        <view wx:if="{{item.orderStatus==3}}" class="appraisal-unknow">无法鉴别</view>
+        <view wx:if="{{item.orderStatus==4}}" class="appraisal-unknow">建议退货</view>
+        <view wx:if="{{item.orderStatus==5}}" class="appraisal-supply">补图</view>
+        <form bindsubmit="saveFormId" report-submit="true">
+          <button form-type="submit" class="formid_button">
+            <view class="product-text">{{item.desc}}</view>
+          </button>
+        </form>
+      </view>
+    </view>
+
+
+    <view id="data_right">
+      <view class='item-box' wx:for="{{list}}" wx:key="index"  wx:for-item='item'  wx:if="{{index%2 != 0}}">
+        <image class='product-photo' src='{{item.picFilePath}}1_0.jpg??x-oss-process=style/thumbnail' bindtap="detailpage" data-index="{{item}}" mode="widthFix" lazy-load='true'></image>
+        <view wx:if="{{item.orderStatus==0}}" class="appraisal-review">待鉴别</view>
+        <view wx:if="{{item.orderStatus==1}}" class="appraisal-false">鉴别为假</view>
+        <view wx:if="{{item.orderStatus==2}}" class="appraisal-true">鉴别为真</view>
+        <view wx:if="{{item.orderStatus==3}}" class="appraisal-unknow">无法鉴别</view>
+        <view wx:if="{{item.orderStatus==4}}" class="appraisal-unknow">建议退货</view>
+        <view wx:if="{{item.orderStatus==5}}" class="appraisal-supply">补图</view>
+        <form bindsubmit="saveFormId" report-submit="true">
+          <button form-type="submit" class="formid_button">
+            <view class="product-text">{{item.desc}}</view>
+          </button>
+        </form>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+<!-- <modele bind:myevent="onCloseModal" showModalAni="{{showModalAni}}">
+  <view class="flex column  flex-align-center ">
+    <view className='modal-title'>提示</view>
+    <view>暂未授权，请先授权</view>
+  </view>
+</modele> -->

@@ -1,0 +1,199 @@
+.all {
+  width: 100%;
+  background-color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  /* position: absolute; */
+  overflow-x: hidden
+}
+
+.topbar {
+  width: 100%;
+  height: 56px;
+  background: rgba(255, 255, 255, 1);
+  /* position: fixed; */
+  /* z-index: 1; */
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+
+.appraisal, .number {
+  width: 88px;
+  height: 32px;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 4px 0px 0px 4px;
+  border: 1.2px solid rgba(34, 34, 34, 1);
+  font-size: 16px;
+  line-height: 30px;
+  float: left;
+  margin-top: 12px;
+  text-align: center;
+}
+
+.appraisal {
+  margin-left: 12px;
+  border-radius: 4px 0px 0px 4px;
+  border-style: solid none solid solid;
+}
+
+.number {
+  border-radius: 4px 4px 4px 4px;
+  border-style: solid solid solid solid;
+  float: right;
+  margin-right: 2%
+}
+
+.formid_but{
+background:  #ffffff;
+}
+
+#user {
+  float: right;
+  line-height: 56px;
+  margin-right: 12px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+#userid{
+  line-height: 56px;
+  margin-left: 12px;
+  text-align: center
+}
+
+.appraisal-review {
+  background: rgba(253, 150, 33, 1); /*待鉴定标签颜色*/
+  position: absolute;
+  width: 74px;
+  height: 32px;
+  text-align: center;
+  line-height: 32px;
+  color: white;
+}
+
+.appraisal-false {
+  background: rgba(196, 38, 2, 1); /*鉴定为假标签颜色*/
+  position: absolute;
+  width: 74px;
+  height: 32px;
+  text-align: center;
+  line-height: 32px;
+  color: white;
+}
+
+.appraisal-true {
+  background: rgba(2, 193, 196, 1); /*鉴定为真标签颜色*/
+  position: absolute;
+  width: 74px;
+  height: 32px;
+  text-align: center;
+  line-height: 32px;
+  color: white;
+}
+
+.appraisal-unknow {
+  background: rgba(51, 51, 51, 1); /*无法鉴定标签颜色*/
+  position: absolute;
+  width: 74px;
+  height: 32px;
+  text-align: center;
+  line-height: 32px;
+  color: white;
+}
+
+.appraisal-sendback {
+  background: rgba(51, 51, 51, 1); /*建议退回标签颜色*/
+  position: absolute;
+  width: 74px;
+  height: 32px;
+  text-align: center;
+  line-height: 32px;
+  color: white;
+}
+
+.appraisal-supply {
+  background: rgba(253, 150, 33, 1); /*补图标签颜色*/
+  position: absolute;
+  width: 74px;
+  height: 32px;
+  text-align: center;
+  line-height: 32px;
+  color: white;
+}
+
+
+.container-box {
+  position: relative;
+  /* top: 66px; */
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+  /* flex-direction: row;
+  flex-wrap: wrap; */
+  /* column-count: 2;
+  column-gap: 0px; */
+  /* margin-right: 2%; */
+  margin-left: 1%;
+  width: 100%
+}
+
+#data_left{
+width:47.5%;
+  box-sizing: border-box;
+}
+
+#data_right{
+  width:47.5%;
+  box-sizing: border-box;
+  margin-right: 2%
+}
+
+.item-box {
+  line-height:center;
+  display: flex;
+  width: 100%;
+  height: auto;
+  flex-direction: column;
+  margin-bottom: 10px;
+  border:1px solid  #ffffff;
+}
+
+.product-photo {
+    width: 100%;
+}
+
+.product-text {
+  width: 100%;
+  font-size: 14px;
+  font-family: SFProText;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+ line-height:1.5em;    
+  margin: 8px 5px 10px 5px
+}
+
+.formid_button {
+background:  #ffffff;
+padding: 0;
+margin: 0;
+text-align: left;
+/* border-radius: 0px 0px 10px 10px;  */
+/* border:2px solid  #ffffff; */
+/* box-shadow: 0 0 10px #ccc; */
+}
+
+
+.change {
+  width: 88px;
+  height: 32px;
+  background: rgba(34, 34, 34, 1);
+  border-radius: 4px 0px 0px 4px;
+  border: 1px solid rgba(34, 34, 34, 1);
+}
+
+#quit {
+  margin-left: 8px;
+}
