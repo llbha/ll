@@ -252,3 +252,10 @@ page {
 button::after{
   border: none
 }
+
+.version{
+ right:8%;
+ top:10%;
+  font-size: 12px;
+  position: absolute;
+}

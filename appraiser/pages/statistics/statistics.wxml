@@ -22,6 +22,8 @@
       <image src="/img/handle/pull_down.png" class="pulldown_pic"></image>
     </view>
   </view>
+
+  <view class="version">版本号：1.0.9</view>
     </button>
 </form>
 

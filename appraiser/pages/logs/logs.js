@@ -12,7 +12,10 @@ Page({
     console.log("推送码", e.detail.formId)
   },
 
+  
+
   click: function(){
     console.log('12333')
+    this.saveFormId(e)
   }
 })
