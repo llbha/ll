@@ -5,10 +5,6 @@ const util = require('./utils/util.js');
 App({
   onLaunch: function() {
     var that = this
-    // 展示本地存储能力
-    // var logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
 
     //调用方法，判断用户是否登录
     that.onGetStroeToken();
@@ -19,50 +15,79 @@ App({
     //判断版本，提示用户升级
     that.check_version();
 
-    // 获取用户信息
-    // wx.getSetting({
-    //   success: res => {
-    //     if (res.authSetting['scope.userInfo']) {
-    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-    //       wx.getUserInfo({
-    //         success: res => {
-    //           // 可以将 res 发送给后台解码出 unionId
-    //           this.globalData.userInfo = res.userInfo
-    //           // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-    //           // 所以此处加入 callback 以防止这种情况
-    //           if (this.userInfoReadyCallback) {
-    //             this.userInfoReadyCallback(res)
-    //           }
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
 
-
-    // 通过获取code值请求到openid
     wx.login({
       success: res => {
-        let code = res.code;
-        console.log("code值：", code)
-        if (code) {
-          var url = config.api.getopenid
-          var params = {
-            'code': code
-          }
-          util.post(url, params).then(function(res) {
-            console.log("获取openid", res.data);
+        console.log(res.code)
+        // 发送 res.code 到后台换取 openId, sessionKey
+        wx.request({
+          url: "http://api.aiera.tech/aiera/adm/openid",
+          header: {
+            'content-type': 'application/json',
+          },
+          method: 'POST',
+          data: {
+            code: res.code,
+          },
+          success: function (res) {
+            // console.log("获取openid成功", res.data);
             if (res.data.code == "0") {
+              // wx.setStorageSync('session_key', res.data.session_key)
               wx.setStorageSync('openid', res.data.openid)
+              if (res.data.unionid){
+                wx.setStorageSync('unionid', res.data.unionid)
+              }
             } else {
-              console.log('获取openid失败：', res.errMsg);
+              console.log('获取openid失败：', res.data.msg);
             }
-          })
-        } else {
-          console.log('获取用户登录失败：', res.errMsg);
-        }
+          },
+          fail: function (res) {
+            console.log('请求openid失败：', res.errMsg);
+          },
+        })
       }
-    })
+   });
+
+  //   wx.getSetting({
+  //     success: res => {
+  //       if (res.authSetting['scope.userInfo']) {
+  //         // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+  //         wx.getUserInfo({
+  //           success: res => {
+  //             // 可以将 res 发送给后台解码出 unionId
+  //             console.log(res)
+
+  //             if (!wx.getStorageSync("unionid")) {
+  //             wx.request({
+  //               url: "https://api.aiera.tech/aiera/sys/WxUnionId",
+  //               header: {
+  //                 'content-type': 'application/json',
+  //               },
+  //               method: 'POST',
+  //               data: {
+  //                 sessionKey: wx.getStorageSync("session_key"),
+  //                 encryptedData: res.encryptedData,
+  //                 iv: res.iv
+  //               },
+  //               success: function (res) {
+  //                 console.log("获取unionid成功", res.data);
+  //                 if (res.data.code == "0") {
+  //                   wx.setStorageSync('unionid', res.data.data.unionId)
+  //                   wx.setStorageSync('userInfo', res.data.data)
+  //                 } else {
+  //                   console.log('获取unionid失败：', res.data.msg);
+  //                 }
+  //               },
+  //             })
+
+  //           }else{
+  //               wx.setStorageSync('userInfo', res.userInfo)
+  //           }
+  //         }
+  //         })
+  //     }
+  //     }
+  //   })
   },
 
 
@@ -77,7 +102,7 @@ App({
   console.log(params)
   let url = '/aiera/adm/login';
   util.post(url, params).then(function (res) {
-    console.log("登录llll", res.data.token)
+    // console.log("登录llll", res.data.token)
     if ("0" == res.data.code) {
       let token = res.data.token;
       wx.setStorageSync('token', token);
@@ -132,7 +157,7 @@ App({
     }
     formIds.push(data);
     this.globalData.globalFormIds = formIds; // 保存推送码并赋值给全局变量
-    console.log(this.globalData.globalFormIds);
+    // console.log(this.globalData.globalFormIds);
     // let num = this.globalData.globalFormIds.length
     // console.log(num);
     // if (num == 10) {

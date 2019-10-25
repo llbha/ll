@@ -1,5 +1,3 @@
-<form bindsubmit="saveFormId" report-submit="true">
-  <button form-type="submit" class="formid_button" bindtap="click">
-                 点我
-  </button>
-</form>
+<multiFormid>
+  <view>点击获取多个formid</view>
+</multiFormid>

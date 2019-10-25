@@ -5,4 +5,5 @@ let myreg = {
 }
 
 export const formalUlr = "https://api.aiera.tech";
+// export const formalUlr = "http://test.aiera.tech";
 module.exports.myreg = myreg;

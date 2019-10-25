@@ -3,43 +3,41 @@
     <button form-type="submit" class="formid_button">
       <view class="header">
         <view class="title">
-          <view wx:if="{{order_info.order_status==0}}" class="appraisal-review">待鉴别</view>
-          <view wx:if="{{order_info.order_status==1}}" class="appraisal-false">鉴别为假</view>
-          <view wx:if="{{order_info.order_status==2}}" class="appraisal-true">鉴别为真</view>
-          <view wx:if="{{order_info.order_status==3}}" class="appraisal-unknow">无法鉴别</view>
-          <view wx:if="{{order_info.order_status==5}}" class="appraisal-unknow">补图</view>
+          <view wx:if="{{item.orderStatus==0 && item.fee_type!=1}}" class="appraisal-review">人工免费待鉴别</view>
+          <view wx:if="{{item.orderStatus==0 && item.fee_type==1}}" class="appraisal-review">人工付费待鉴别</view>
+          <view wx:if="{{item.orderStatus==8}}" class="appraisal-review">已补图待鉴别</view>
+          <view wx:if="{{item.orderStatus==9}}" class="appraisal-review">AI待鉴别</view>
+          <view wx:if="{{item.orderStatus==1}}" class="appraisal-false">鉴别为假</view>
+          <view wx:if="{{item.orderStatus==2}}" class="appraisal-true">鉴别为真</view>
+          <view wx:if="{{item.orderStatus==3}}" class="appraisal-unknow">无法鉴别</view>
+          <view wx:if="{{item.orderStatus==5}}" class="appraisal-unknow">补图</view>
         </view>
         <view class="logo">
-          <image wx:if="{{order_info.order_status==0}}" class="appraisal-review" src="../../img/handle/label_review@2x.png"></image>
-          <image wx:if="{{order_info.order_status==1}}" class="appraisal-review" src="../../img/handle/label_unable@2x.png"></image>
-          <image wx:if="{{order_info.order_status==2}}" class="appraisal-review" src="../../img/handle/label_true@2x.png"></image>
-          <image wx:if="{{order_info.order_status==3}}" class="appraisal-review" src="../../img/handle/label_false@2x.png"></image>
-          <image wx:if="{{order_info.order_status==5}}" class="appraisal-review" src="../../img/handle/label_add@2x.png"></image>
+          <image wx:if="{{item.orderStatus==0 || item.orderStatus==8 || item.orderStatus==9}}" class="appraisal-review" src="../../img/handle/label_review@2x.png"></image>
+          <image wx:if="{{item.orderStatus==1}}" class="appraisal-review" src="../../img/handle/label_unable@2x.png"></image>
+          <image wx:if="{{item.orderStatus==2}}" class="appraisal-review" src="../../img/handle/label_true@2x.png"></image>
+          <image wx:if="{{item.orderStatus==3}}" class="appraisal-review" src="../../img/handle/label_false@2x.png"></image>
+          <image wx:if="{{item.orderStatus==5}}" class="appraisal-review" src="../../img/handle/label_add@2x.png"></image>
         </view>
       </view>
 
-      <view wx:if="{{order_info.order_status==0}}" class='order_info1'>
+      <view wx:if="{{item.orderStatus==0 || item.orderStatus==8 || item.orderStatus==9}}" class='order_info1'>
         <view>鉴别订单号：{{item.orderNo}}</view>
         <view class="tiem" space="ensp">创建时间：{{order_info.create_time}}</view>
         <view class="tiem">鉴定师：{{order_info.udpate_user_name}}</view>
       </view>
 
-      <view wx:if="{{order_info.order_status==1 || order_info.order_status==2 || order_info.order_status==3}}" class='order_info'>
+      <view wx:if="{{item.orderStatus==1 || item.orderStatus==2 || item.orderStatus==3 || item.orderStatus==5}}" class='order_info'>
+        <view wx:if="{{item.fee_type == 1 && item.type==2}}" class="tiem">付费鉴别单</view>
+        <view wx:if="{{item.fee_type == 2 && item.type==2}}" class="tiem">免费鉴别单</view>
+        <view wx:if="{{item.type==1}}" class="tiem">AI鉴别单</view>
         <view>鉴别订单号：{{item.orderNo}}</view>
         <view class="tiem" space="ensp">创建时间：{{order_info.create_time}}</view>
-        <view wx:if="{{order_info.order_status!=0}}" class="tiem">鉴别时间：{{order_info.update_time}}</view>
-        <view wx:if="{{order_info.order_status!=0}}" class="tiem">鉴定师：{{order_info.udpate_user_name}}</view>
+        <view wx:if="{{item.orderStatus!=0}}" class="tiem">鉴别时间：{{order_info.update_time}}</view>
+        <view wx:if="{{item.orderStatus!=0}}" class="tiem">鉴定师：{{order_info.udpate_user_name}}</view>
       </view>
 
-      <view wx:if="{{order_info.order_status==5}}" class='order_info'>
-        <view>鉴别订单号：{{item.orderNo}}</view>
-        <view class="tiem" space="ensp">创建时间：{{order_info.create_time}}</view>
-        <view wx:if="{{order_info.order_status!=0}}" class="tiem">鉴别时间：{{order_info.update_time}}</view>
-        <view wx:if="{{order_info.order_status!=0}}" class="tiem">鉴定师：{{order_info.udpate_user_name}}</view>
-      </view>
-
-
-      <view class="reason" wx:if="{{order_info.order_status==5}}">
+      <view class="reason" wx:if="{{item.orderStatus==5}}">
         <block wx:for="{{reason_list}}" wx:key="reason_list">
           <text class='res_index' wx:if="{{item.type=='manual'}}">存在问题：{{item.value}}</text>
           <view class="reason-box">
@@ -50,8 +48,25 @@
     </button>
   </form>
 
+  <view class="" wx:if="{{item.orderStatus==8}}">
+    <view class="add_pic">补图内容:</view>
+    <block wx:for="{{r_list}}" wx:for-index="indexd" wx:key="{{r_list}}">
+      <block wx:for="{{r_list[indexd]}}" wx:for-item='item' wx:key="{{r_list[indexd]}}">
+        <image class='product-photo' src='{{item.picUrl}}' mode="widthFix"></image>
+      </block>
+      <view class="reason_8">
+        <block wx:for="{{rea_list[indexd]}}" wx:key="rea_list">
+          <text class='res_index' wx:if="{{item.type=='manual'}}"> 此次存在问题：{{item.value}}</text>
+          <view class="reason-box">
+            <view class='reason_index' wx:if="{{item.type=='auto'}}">{{item.value}}</view>
+          </view>
+        </block>
+      </view>
+    </block>
+  </view>
 
-  <view class="container-pic_0" wx:if="{{order_info.order_status==0}}">
+
+  <view class="container-pic_0" wx:if="{{item.orderStatus==0 || item.orderStatus==9}}">
     <block wx:for="{{list}}" wx:key="res_list" wx:for-item='item'>
       <view class='item-box'>
         <form bindsubmit="saveFormId" report-submit="true">
@@ -63,7 +78,7 @@
     </block>
   </view>
 
-  <view class="container-pic" wx:if="{{order_info.order_status!=0}}">
+  <view class="container-pic" wx:if="{{item.orderStatus!=0 && item.orderStatus!=8}}">
     <block wx:for="{{list}}" wx:key="res_list" wx:for-item='item'>
       <view class='item-box'>
         <form bindsubmit="saveFormId" report-submit="true">
@@ -80,29 +95,50 @@
 
 
 <!-- 底部悬浮框 -->
-<view wx:if="{{order_info.order_status==0}}" class="round-click" hover-class="plus-hover">
-  <form bindsubmit="saveFormId" report-submit="true">
-    <button form-type="submit" class="true" bindtap='preventTouchMove_true' data-status="true">
-      <text>真</text>
-    </button>
-  </form>
-  <form bindsubmit="saveFormId" report-submit="true">
-    <button form-type="submit" class="false" bindtap='preventTouchMove_false' data-status="false">
-      <text>假</text>
-    </button>
-  </form>
-  <form bindsubmit="saveFormId" report-submit="true">
-    <button form-type="submit" class="unknow" bindtap='preventTouchMove_unknow' data-status="unknow">
-      <text>无法鉴别</text>
-    </button>
-  </form>
-  <form bindsubmit="saveFormId" report-submit="true">
-    <button form-type="submit" class="supply" bindtap='preventTouchMove_supply' data-status="supply">
-      <text>补图</text>
-    </button>
-  </form>
+<view wx:if="{{item.type !=1 }}">
+  <view wx:if="{{item.orderStatus==0  || item.orderStatus==8 || item.orderStatus==9}}" class="round-click" hover-class="plus-hover">
+    <form bindsubmit="saveFormId" report-submit="true">
+      <button form-type="submit" class="true" bindtap='preventTouchMove_true' data-status="true">
+        <text>真</text>
+      </button>
+    </form>
+    <form bindsubmit="saveFormId" report-submit="true">
+      <button form-type="submit" class="false" bindtap='preventTouchMove_false' data-status="false">
+        <text>假</text>
+      </button>
+    </form>
+    <form bindsubmit="saveFormId" report-submit="true">
+      <button form-type="submit" class="unknow" bindtap='preventTouchMove_unknow' data-status="unknow">
+        <text>无法鉴别</text>
+      </button>
+    </form>
+    <form bindsubmit="saveFormId" report-submit="true">
+      <button form-type="submit" class="supply" bindtap='preventTouchMove_supply' data-status="supply">
+        <text>补图</text>
+      </button>
+    </form>
+  </view>
 </view>
 
+<view wx:if="{{item.type ==1 }}">
+  <view wx:if="{{item.orderStatus==0  || item.orderStatus==8 || item.orderStatus==9}}" class="round-click" hover-class="plus-hover">
+    <form bindsubmit="saveFormId" report-submit="true">
+      <button form-type="submit" class="true" bindtap='preventTouchMove_true' data-status="true">
+        <text>真</text>
+      </button>
+    </form>
+    <form bindsubmit="saveFormId" report-submit="true">
+      <button form-type="submit" class="false" bindtap='preventTouchMove_false' data-status="false">
+        <text>假</text>
+      </button>
+    </form>
+    <form bindsubmit="saveFormId" report-submit="true">
+      <button form-type="submit" class="unknow" bindtap='preventTouchMove_unknow' data-status="unknow">
+        <text>无法鉴别</text>
+      </button>
+    </form>
+  </view>
+</view>
 
 
 <!-- 添加标签 -->
@@ -169,11 +205,11 @@
       </form>
     </view>
 
-<form bindsubmit="saveFormId" report-submit="true">
-        <button form-type="submit" class="formid_button">
-    <input class="input-text" placeholder="补充说明" bindinput='getRemarks'></input>
-            </button>
-      </form>
+    <form bindsubmit="saveFormId" report-submit="true">
+      <button form-type="submit" class="formid_button">
+        <input class="input-text" placeholder="补充说明" bindinput='getRemarks'></input>
+      </button>
+    </form>
 
     <checkbox-group name="checkbox" class="check">
       <label bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindtap='clicks' bindlongpress="load" wx:for="{{checks}}" wx:key="{{checks}}" wx:for-index="index" data-index="{{index}}" class='{{item.checked?"is_checked":""}}' data-val="{{item.name}}">

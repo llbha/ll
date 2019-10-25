@@ -75,7 +75,8 @@ Page({
   addInfo: function() {
     var that = this
     wx.request({
-      url: 'https://api.aiera.tech/aiera/sys/orders/userCheckCountlist',
+      // url: 'https://api.aiera.tech/aiera/sys/orders/userCheckCountlist',
+      url: common.formalUlr + config.api.userCheckCountlist,
       header: {
         'content-type': 'application/json',
         'token': wx.getStorageSync('token')

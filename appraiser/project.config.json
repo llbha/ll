@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 5,
 			"list": [
 				{
 					"id": -1,
@@ -66,22 +66,8 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/test",
-					"pathName": "pages/test",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "statistics",
 					"pathName": "pages/statistics/statistics",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 4,
-					"name": "test",
-					"pathName": "pages/test/test",
 					"query": "",
 					"scene": null
 				},
@@ -98,6 +84,14 @@
 					"pathName": "pages/logs/logs",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "pages/share/index",
+					"pathName": "pages/share/index",
+					"query": "userid=25&id=1",
+					"scene": 1036,
+					"referrerInfo": {}
 				}
 			]
 		}

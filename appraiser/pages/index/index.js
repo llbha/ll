@@ -76,7 +76,8 @@ Page({
     let that = this
     let pagenum = that.data.pagenum
     wx.request({
-      url: 'https://api.aiera.tech/aiera/adm/orders/list',
+      // url: 'https://api.aiera.tech/aiera/adm/orders/list',
+      url: common.formalUlr + config.api.order_list,
       header: {
         'content-type': 'application/json',
         'token': wx.getStorageSync('token')
@@ -118,7 +119,8 @@ Page({
   addInfo: function() {
     var that = this
     wx.request({
-      url: 'https://api.aiera.tech/aiera/adm/orders/list',
+      // url: 'https://api.aiera.tech/aiera/adm/orders/list',
+      url: common.formalUlr + config.api.order_list,
       header: {
         'content-type': 'application/json',
         'token': wx.getStorageSync('token')
@@ -130,13 +132,13 @@ Page({
         pageNumber: 1,
       },
       success: function(res) {
-        console.log('res', res.data)
+        // console.log('res', res.data)
         if ("0" == res.data.code) {
           let list = res.data.rows;
           that.setData({
             list
           })
-          console.log('list', list)
+          // console.log('list', list)
         } else if ('401' == res.data.code) {
           if (wx.getStorageSync('username')) {
             console.log('token值失效')

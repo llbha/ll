@@ -6,16 +6,16 @@ Page({
   data: {
     logs: []
   },
+
  
-  //搜集推送码  --保存推送码
+  // 搜集推送码  --保存推送码
   saveFormId: function (e) {
-    console.log("推送码", e.detail.formId)
+    setTimeout(function () {
+      console.log("推送码", e.detail.formId)
+    }, 1500); 
   },
 
-  
-
-  click: function(){
+  click: function (){
     console.log('12333')
-    this.saveFormId(e)
   }
 })

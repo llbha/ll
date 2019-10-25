@@ -56,14 +56,49 @@ margin-right: 12px;
   text-align: center
 }
 
-.appraisal-review {
-  background: rgba(253, 150, 33, 1); /*待鉴定标签颜色*/
+.appraisal-review-8-2{
+  background: rgba(253, 150, 33, 1); /*免费待鉴定标签颜色*/
   position: absolute;
-  width: 74px;
+  width: 90px;
   height: 32px;
   text-align: center;
   line-height: 32px;
   color: white;
+  font-size: 14px;
+}
+
+.appraisal-review-8-1 {
+  background: #FD6F21; /*付费待鉴定标签颜色*/
+  position: absolute;
+  width: 90px;
+  height: 32px;
+  text-align: center;
+  line-height: 32px;
+  color: white;
+  font-size: 14px;
+}
+
+
+ .appraisal-review-2 {
+  background: rgba(253, 150, 33, 1); /*免费待鉴定标签颜色*/
+  position: absolute;
+  width: 104px;
+  height: 32px;
+  text-align: center;
+  line-height: 32px;
+  color: white;
+  font-size: 14px;
+}
+
+.appraisal-review-1 {
+  background: #FD6F21; /*付费待鉴定标签颜色*/
+  position: absolute;
+  width: 104px;
+  height: 32px;
+  text-align: center;
+  line-height: 32px;
+  color: white;
+  font-size: 14px;
 }
 
 .appraisal-false {
@@ -74,6 +109,7 @@ margin-right: 12px;
   text-align: center;
   line-height: 32px;
   color: white;
+  font-size: 15px;
 }
 
 .appraisal-true {
@@ -84,6 +120,7 @@ margin-right: 12px;
   text-align: center;
   line-height: 32px;
   color: white;
+  font-size: 15px;
 }
 
 .appraisal-unknow {
@@ -94,6 +131,7 @@ margin-right: 12px;
   text-align: center;
   line-height: 32px;
   color: white;
+  font-size: 15px;
 }
 
 .appraisal-sendback {
@@ -104,10 +142,11 @@ margin-right: 12px;
   text-align: center;
   line-height: 32px;
   color: white;
+  font-size: 15px;
 }
 
 .appraisal-supply {
-  background: rgba(253, 150, 33, 1); /*补图标签颜色*/
+  background: rgba(51, 51, 51, 1); /*补图标签颜色*/
   position: absolute;
   width: 74px;
   height: 32px;
@@ -156,14 +195,25 @@ width:47.5%;
     width: 100%;
 }
 
-.product-text {
-  width: 100%;
-  font-size: 14px;
+.product-orderNo{
+  font-size: 12px;
   font-family: SFProText;
   font-weight: 400;
-  color: rgba(51, 51, 51, 1);
- line-height:1.5em;    
-  margin: 8px 5px 10px 5px
+  color: rgba(51, 51, 51, 1); 
+  white-space: nowrap;
+  text-overflow: ellipsis;
+overflow: hidden;
+  height: 22px;
+}
+
+.product-text {
+  font-size: 12px;
+  font-family: SFProText;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);  
+    white-space: nowrap;
+  text-overflow: ellipsis;
+overflow: hidden;
 }
 
 .formid_button {

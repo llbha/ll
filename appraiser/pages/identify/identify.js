@@ -32,10 +32,13 @@ Page({
 
     obj: {
       'type': "manual",
-      'value': ''
+      'value': '',
+      'time':'',
     },
 
     labels: [],
+
+    add_list:[],
 
     checks: [{
         name: "鞋标铺平高清",
@@ -131,7 +134,8 @@ Page({
   getData: function() {
     var that = this
     wx.request({
-      url: 'https://api.aiera.tech/aiera/adm/ordersDetail/list',
+      // url: 'https://api.aiera.tech/aiera/adm/ordersDetail/list',
+      url: common.formalUlr + config.api.orderdetail,
       header: {
         'content-type': 'application/json',
         'token': wx.getStorageSync('token')
@@ -151,9 +155,84 @@ Page({
           order_info.create_time = util.formatDate(order_info.create_time)
           order_info.update_time = util.formatDate(order_info.update_time)
           let reason_list = res.data.order_info.reason
-          console.log(list)
-          console.log(order_info)
-          console.log(reason_list)
+          if(that.data.item.orderStatus == "8"){
+
+            let rea_list = []
+            let n_list = []
+            for (var i in reason_list) {
+              let a = i
+              let b = Number(i) + 1
+              if (b < reason_list.length) {
+                let c = reason_list[i].time
+                let d = reason_list[b].time
+                if (c != d) {
+                  n_list.push(b)
+                }
+              }
+            }
+            n_list.push(reason_list.length)
+            for (var i in n_list) {
+              let e = i
+              let f = n_list[e]
+              if (e == 0) {
+                let add_rea = []
+                for (var j = 0; j < f; j++) {
+                  add_rea.push(reason_list[j])
+                }
+                rea_list.push(add_rea)
+              } else {
+                let g = n_list[Number(e) - 1]
+                let add_rea = []
+                for (var j = g; j < f; j++) {
+                  add_rea.push(reason_list[j])
+                }
+                rea_list.push(add_rea)
+              }
+            }
+
+
+
+            let r_list = []
+            let num_list = []
+            for (var i in list) {
+              let num = i
+              let nums = Number(i) + 1
+              if(nums <list.length){
+                let f = list[i].createTime
+                let s = list[nums].createTime
+                if (f != s) {
+                  num_list.push(nums)
+                }
+              }
+            }
+            num_list.push(list.length)
+            console.log(',,,', num_list)
+            for (var i in num_list){
+              let n = i
+              let ns = num_list[n]
+              if(n == 0){
+                let add_pic = []
+                for (var j = 0; j < ns; j++) {
+                  add_pic.push(list[j])
+                }
+                r_list.push(add_pic)
+              }else{
+                let k = num_list[Number(n)-1]
+                let add_pic = []
+                for (var j = k; j < ns; j++) {
+                  add_pic.push(list[j])
+                }
+                r_list.push(add_pic)
+              }
+            }
+            console.log("r_pic", r_list);
+            console.log("rea_list", rea_list);
+            that.setData({
+              r_list: r_list,
+              rea_list: rea_list
+            })
+          }
+        
           that.setData({
             list,
             order_info,
@@ -189,7 +268,8 @@ Page({
   getUserinfo: function() {
     var that = this
     wx.request({
-      url: 'https://api.aiera.tech/aiera/adm/user/info',
+      // url: 'https://api.aiera.tech/aiera/adm/user/info',
+      url: common.formalUlr + config.api.userinfo,
       header: {
         'content-type': 'application/json',
         'token': wx.getStorageSync('token')
@@ -469,7 +549,7 @@ Page({
     let obj = that.data.obj
     let object = that.data.object
     let reason_list = that.data.reason_list
-    // console.log('@@@', result, obj)
+    console.log('@@@', result, obj)
     this.hideModal();
     if (result == 'true') {
       orderStatus = 2
@@ -488,11 +568,23 @@ Page({
         ['obj.value']: that.data.remarks
       })
       reason_list.unshift(that.data.obj)
+      // 添加时间戳
+      var timestamp = Date.parse(new Date()) / 1000
+      console.log('aaa', timestamp)
+      for (var i in reason_list) {
+        reason_list[i]['time'] = timestamp
+      }
     }
-    console.log("reason_list",reason_list)
+    if(reason_list=='null'){
+      this.setData({
+        reason_list:[]
+      })
+    }
+    console.log("reason_list", that.data.reason_list)
 
     wx.request({
-      url: 'https://api.aiera.tech/aiera/adm/orders/update',
+      // url: 'http://192.168.117.128:8004/aiera/adm/orders/update',
+      url: common.formalUlr + config.api.updateorder,
       header: {
         'content-type': 'application/json',
         'token': wx.getStorageSync('token')
@@ -502,7 +594,7 @@ Page({
         orderStatus: orderStatus,
         update_user_id: that.data.userId,
         orderId: that.data.orderId,
-        reason: reason_list
+        reason: that.data.reason_list
       },
       success: function(res) {
         console.log('res', res.data)
@@ -575,7 +667,6 @@ Page({
       });
     }, 3500);
   },
-
 
   bindTouchStart: function(e) {
     this.startTime = e.timeStamp;
