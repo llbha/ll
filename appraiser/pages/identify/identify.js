@@ -563,7 +563,7 @@ Page({
     if (result == 'supply') {
       orderStatus = 5
     }
-    if (that.data.remarks) {
+    if (that.data.remarks || that.data.reason_list) {
       this.setData({
         ['obj.value']: that.data.remarks
       })
