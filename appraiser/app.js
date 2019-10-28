@@ -21,7 +21,7 @@ App({
         console.log(res.code)
         // 发送 res.code 到后台换取 openId, sessionKey
         wx.request({
-          url: "http://api.aiera.tech/aiera/adm/openid",
+          url: "https://api.aiera.tech/aiera/adm/openid",
           header: {
             'content-type': 'application/json',
           },
@@ -30,7 +30,7 @@ App({
             code: res.code,
           },
           success: function (res) {
-            // console.log("获取openid成功", res.data);
+            console.log("获取openid成功", res.data);
             if (res.data.code == "0") {
               // wx.setStorageSync('session_key', res.data.session_key)
               wx.setStorageSync('openid', res.data.openid)
@@ -169,7 +169,7 @@ App({
     // console.log('推送成功');
     // this.globalData.globalFormIds = ''
     var that = this
-    console.log('eeeee', wx.getStorageSync('token'))
+    // console.log('eeeee', wx.getStorageSync('token'))
     wx.request({
       url: 'https://api.aiera.tech/aiera/adm/upload/wxformid',
       header: {

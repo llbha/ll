@@ -105,7 +105,7 @@ Page({
         value: '12',
         checked: false
       },
-    ]
+    ],
 
   },
 
@@ -115,10 +115,14 @@ Page({
   onLoad: function(options) {
     var that = this
     let it = options.item
+    let head = options.head
+    let filter = options.filter
     let item = JSON.parse(it)
     console.log('item', item)
     that.setData({
-      item
+      item: item,
+      head: head,
+      filter: filter
     })
     let orderId = that.data.item.orderId
     console.log('orderId', orderId)
@@ -605,7 +609,7 @@ Page({
           //   url: '/pages/identify/identify?item=' + data
           // })
           wx.reLaunch({
-            url: '/pages/index/index',
+            url: '/pages/index/index?head=' + that.data.head + "&filter=" + that.data.filter
           })
         } else if ('401' == res.data.code) {
           console.log('token值失效')

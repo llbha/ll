@@ -12,6 +12,8 @@ Page({
     list: [],
     pagenum: 1,
     userID: wx.getStorageSync('username'),
+    head: '全部订单',
+    filter: 1
   },
 
   /**
@@ -52,6 +54,7 @@ Page({
   },
 
 
+
   /**
    * 上拉加载数据
    */
@@ -87,6 +90,7 @@ Page({
         sortOrder: "desc",
         pageSize: 10,
         pageNumber: pagenum,
+        filter: that.data.filter
       },
       success: function(res) {
         console.log('pagenum', pagenum)
@@ -130,6 +134,7 @@ Page({
         sortOrder: "desc",
         pageSize: 10,
         pageNumber: 1,
+        filter: that.data.filter
       },
       success: function(res) {
         // console.log('res', res.data)
@@ -152,6 +157,23 @@ Page({
         }
       }
     })
+  },
+
+
+  filter: function () {
+    var that = this
+    if (that.data.head =='未处理订单'){
+      that.setData({
+        head: '全部订单',
+        filter: 1
+      })
+    } else if(that.data.head == '全部订单'){
+      that.setData({
+        head: '未处理订单',
+        filter: 0
+      })
+    }
+    that.addInfo()
   },
 
 
@@ -206,8 +228,9 @@ Page({
     var data = e.currentTarget.dataset
     console.log('data', data.index)
     data = JSON.stringify(data.index)
+    var that = this
     wx.navigateTo({
-      url: '/pages/identify/identify?item=' + data
+      url: '/pages/identify/identify?item=' + data + "&head=" + that.data.head + "&filter=" + that.data.filter
     })
   },
 

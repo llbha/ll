@@ -7,6 +7,11 @@
       </button>
     </form>
     <form bindsubmit="saveFormId" report-submit="true">
+      <button form-type="submit" class="formid_button" bindtap="filter" id="num">
+        <view class="number">{{head}}</view>
+      </button>
+    </form>
+    <form bindsubmit="saveFormId" report-submit="true">
       <button form-type="submit" class="formid_button" bindtap="statistics" id="num">
         <view class="number">鉴别数量</view>
       </button>
