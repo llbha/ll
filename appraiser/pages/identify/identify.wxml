@@ -78,7 +78,7 @@
     </block>
   </view>
 
-  <view class="container-pic" wx:if="{{item.orderStatus!=0 && item.orderStatus!=8}}">
+  <view class="container-pic" wx:if="{{item.orderStatus!=0 && item.orderStatus!=8 && item.orderStatus!=9}}">
     <block wx:for="{{list}}" wx:key="res_list" wx:for-item='item'>
       <view class='item-box'>
         <form bindsubmit="saveFormId" report-submit="true">

@@ -6,22 +6,17 @@
         <view id="userid" style="display:inline-block;">ID:{{userID}}</view>
       </button>
     </form>
-    <form bindsubmit="saveFormId" report-submit="true">
-      <button form-type="submit" class="formid_button" bindtap="filter" id="num">
-        <view class="number">{{head}}</view>
-      </button>
-    </form>
-    <form bindsubmit="saveFormId" report-submit="true">
-      <button form-type="submit" class="formid_button" bindtap="statistics" id="num">
-        <view class="number">鉴别数量</view>
-      </button>
-    </form>
+  
+<view>
+      <view class="number0" bindtap="statistics">鉴别数量</view>
+      <view class="number1" bindtap="filter">{{head}}</view>
+</view>
 
     <!-- <view class="user">
       <view id="user_id" style="display:inline-block;">ID:{{userID}}</view>
       <view bindtap="quit" id='quit'>退出</view>
     </view> -->
-  </view>
+</view>
 
   <view class="container-box">
     <view id="data_left">
